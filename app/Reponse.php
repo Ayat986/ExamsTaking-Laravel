@@ -12,4 +12,10 @@ class Reponse extends Model
     {
     	return $this->belongsTo(Examen_passer::class);
     }
+
+ public function answer()
+    {
+    	return $this->hasOne(Answer::class,'id','answer_id');
+    }
+
 }

@@ -4,7 +4,7 @@
     @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <!--<div class="card">
                     <h5 class="card-header"><b> {{ $examen->titre }} </b></h5>
 
@@ -51,24 +51,25 @@
                 </div>
                 @endforeach
 </div>
- 
-</div>
-<div>
-                    
+ <div class="row">
+            <button type="submit" class="btn btn-primary" id="submit">Valider mes réponses</button>
+
+         <a class="btn  btn-success" 
+                    href="/home"> Annuler </a> 
+     </div> 
 </div>
 
+      
 </div>
 
                    
-                    <div>
-                    <button type="submit" class="btn btn-primary" id="submit">Valider mes réponses</button>
-
-                    <a class="btn mt-4 btn-success" 
-                    href="/home"> Annuler </a> 
-                </div>
+                   
 
             </div>
-        </div>        
+        </div>  <!-- i put it here -->
+
+  
+  </div>                   
     </div>
 
  </form>

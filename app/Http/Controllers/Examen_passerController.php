@@ -8,6 +8,7 @@ use App\Examen_passer;
 use App\Reponse;
 use App\Reponsetxt;
 use Auth;
+use App\User;
 
 class Examen_passerController extends Controller
 {
@@ -53,5 +54,29 @@ class Examen_passerController extends Controller
             $examen_passer->reponsestxt()->saveMany($reponsestxtarray); }
     	
         return redirect('/home');
+    }
+
+    public function corriger($examen_passer_id)
+    {
+
+        $examen_passer = Examen_passer::where('id',$examen_passer_id)->first();
+
+         $examen = Examen::where('id',$examen_passer->examen_id)->first();
+
+         $etudiant = User::where('id',$examen_passer->etudiant_id)->first();
+
+         $reponse = Reponse::where('examen_passer_id',$examen_passer_id)->get();
+
+         $reponsetxt = Reponsetxt::where('examen_passer_id',$examen_passer_id)->get();
+
+
+        return view('/examens_prof.corriger2',compact('examen','examen_passer','etudiant','reponse','reponsetxt'));
+    }
+
+    public function noter(Request $request,$examen_passer_id)
+    {
+        Examen_passer::where('id',$examen_passer_id)->update(['note'=> $request->note]);
+        
+        return redirect('/examens_prof_corriger');
     }
 }

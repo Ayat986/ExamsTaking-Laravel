@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Examen;
 use Auth;
+use App\User;
 use App\Examen_passer;
 use Illuminate\Support\Facades\DB;
 
@@ -58,48 +59,17 @@ class ExamenController extends Controller
 
     public function corriger()
     {
-       /* $examenc = Examen::where('prof_id',Auth::guard('professor')->id())->get();
-        //$examen_passer = Examen_passer::whereIn('examen_id',$examen->id())->get();
-
-        foreach ($examenc as $examen) {
-         $examenid[] = $examen->id;
-        }
-        //$examen_passer = DB::table('examen_passers')->whereIn('examen_id',$examenid)->get();
-
-        $examen_passer = Examen_passer::where('examen_id',$examenid)->get(); */
-
-        //$examen_passer = Examen_passer::all();
+      
 
         $examen = Examen::where('prof_id',Auth::guard('professor')->id())->get();
-        //dd($examen->examen_passers->pluck('etudiant_id'));
 
-//$examen_passer = Examen_passer::all();
+        $etudiants = User::all();
 
-        /*foreach($examen->examen_passer as $examenp)
-        {
-
-        }*/
-
-        /*foreach($examen_passer->rexamen() as $examen_passer)
-        {
-            echo $examen_passer->prof_id;
-        }*/
-
-        /*foreach($examen_passer as $examen_passer)
-        {
-            if($examen_passer->rexamen()->prof_id == Auth::guard('professor')->id())
-            {
-                $examen_passer2 = $examen_passer;
-            }
-        }*/
-
-        return view('/examens_prof.corriger',compact('examen'));
+       
+        return view('/examens_prof.corriger',compact('examen','etudiants'));
 
 
-       //dd($examen_passer2);
-        //$ids = $examen->examen_passers->pluck('etudiant_id');
-
-        //dd($ids);
+      
 
     }
 }

@@ -38,7 +38,7 @@ Route::view('/', 'welcome');
 
     Route::get('/home', 'HomeController@index')->middleware('auth');
     Route::view('/admin', 'admin')->middleware('auth:admin');
-    Route::view('/professor', 'professor')->middleware('auth:professor');
+    Route::view('/professor', 'professor');//->middleware('auth:professor');
 
 
     Route::resource('/professors','ProfessorsController');
@@ -64,3 +64,7 @@ Route::view('/', 'welcome');
     Route::delete('/examens/{examen}','ExamenController@destroy');
 
     Route::get('/examens_prof_corriger','ExamenController@corriger');
+
+    Route::get('/examen_passer_etudiant/{examen_passer_id}','Examen_passerController@corriger');
+
+    Route::post('/examen_passer_corriger/{examen_passer_id}','Examen_passerController@noter');

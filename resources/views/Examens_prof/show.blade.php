@@ -1,16 +1,13 @@
 @extends('layouts.prof')
 
     @section('content')
-    <div class="container">
+    <div class="container" style='padding-top: 20px'>
+
+        <div class="alert alert-warning" role="alert">
+  Vous pouvez modifier vos examens ici !
+</div>
         <div class="row ">
             
-                <!--<div class="card">
-                    <div class="card-header">Dashboard</div>
-
-                    <div class="card-body">
-                          
- <div class="card-deck">        
-       -->
                         @foreach( $examen as $examen ) 
                        
                        <div class="card mt-4" style="width: 18rem; margin:12px;" >
